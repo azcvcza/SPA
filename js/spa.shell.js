@@ -177,6 +177,8 @@ spa.shell = (function () {
         $.uriAnchor.configModule({
             schema_map:configMap.anchor_schema_map
         });
+        spa.chat.configModule({});
+        spa.chat.initModule(jqueryMap.$chat);
         $(window).bind("hashChange",onHashChange).trigger("hashchange");
     }//end initModule
     return { initModule: initModule };
