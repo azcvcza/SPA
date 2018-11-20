@@ -24,12 +24,14 @@ spa.shell = (function () {
         chat_retract_height: 15,
         chat_extend_title: "click to init",
         chat_retract_title: "click to extend",
+        resize_interval:200
 
     };//end configMap
     var stateMap = {
         $container: null,
         is_chat_retracted: true,
         anchor_map:{},
+        resize_idto:undefined,
     };
     var jqueryMap = {};
     var setJqueryMap;
@@ -40,8 +42,19 @@ spa.shell = (function () {
     var copyAnchorMap;
     var changeAnchorPart;
     var onHashChange;
+    var onResize;
     //end variable
 
+    onResize = function(){
+        if(stateMap.resize_idto){return true}
+        spa.chat.handleResize();
+        stateMap.resize_idto = setTimeout(function(){
+            stateMap.resize_idto = undefined;
+        },configMap.resize_interval)
+        console.log("resize on")
+        return true;
+    }
+    //end Resize
     copyAnchorMap = function(){
         return $.extend(true,{},stateMap.anchor_map);
     }//end copyAnchorMap
@@ -179,7 +192,7 @@ spa.shell = (function () {
         });
         spa.chat.configModule({});
         spa.chat.initModule(jqueryMap.$chat);
-        $(window).bind("hashChange",onHashChange).trigger("hashchange");
+        $(window).bind('resize',onResize).bind("hashChange",onHashChange).trigger("hashchange");
     }//end initModule
     return { initModule: initModule };
 })();
