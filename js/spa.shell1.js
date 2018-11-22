@@ -11,7 +11,7 @@
 */
 /*global $, spa */
 
-spa.shell = (function () {
+/*spa.shell = (function () {
     //---------------- BEGIN MODULE SCOPE VARIABLES --------------
     var
       configMap = {
@@ -262,4 +262,5 @@ spa.shell = (function () {
     return { initModule : initModule };
     //------------------- END PUBLIC METHODS ---------------------
   }());
+  */
   

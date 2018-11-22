@@ -1,13 +1,22 @@
-var spa =(function($){
-    var initModule = function(target){
-        var container = $(target);
-        spa.shell.initModule(container);
-        //console.log(target,container)
-        //container.html("<h1 style='display:inline-block;margin:25px;text-align:center;'>"+"hello spa"+"</h1>")
-        //container.innerHTML = "<h1 style='display:inline-block;margin:25px;>"+"hello spa"+"</h1>";
-        //console.log(container,"after")
-    }
-    return{
-        initModule:initModule
-    }
-})(jQuery);
+/*
+ * spa.js
+ * Root namespace module
+*/
+
+/*jslint           browser : true,   continue : true,
+  devel  : true,    indent : 2,       maxerr  : 50,
+  newcap : true,     nomen : true,   plusplus : true,
+  regexp : true,    sloppy : true,       vars : false,
+  white  : true
+*/
+/*global $, spa */
+
+var spa = (function () {
+  'use strict';
+  var initModule = function ( $container ) {
+    spa.model.initModule();
+    spa.shell.initModule( $container );
+  };
+
+  return { initModule: initModule };
+}());
